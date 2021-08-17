@@ -9,7 +9,9 @@ interface ISearch {
 export default function Search(props: ISearch) {
   const [searchTerm, setSearchTerm] = useState('');
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+    const rawValue = e.target.value;
+    const value = rawValue.split(".").slice(0, 2).map((ele, i) => i ? ele.slice(0, 2) : ele).join(".")
+    setSearchTerm(value);
   }
   const debouncedValue = useDebounce(searchTerm, 200)
   useEffect(() => {
@@ -20,14 +22,15 @@ export default function Search(props: ISearch) {
       <input
         className={styles.input}
         id='search-input'
+        value={searchTerm}
         type="text"
         defaultValue=""
-        placeholder="Search orders by price"
+        placeholder="Search by price (e.g. 34.56)"
         onChange={onInputChange}
         autoComplete={"off"}
       />
       {
-        debouncedValue && 
+        debouncedValue &&
         <div className={styles.count}>
           Matching Orders: {props.count}
         </div>

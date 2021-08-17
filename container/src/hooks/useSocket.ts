@@ -3,8 +3,7 @@ import {useEffect} from 'react';
 import io from 'socket.io-client';
 import {ISocketCallback} from 'src/types';
 
-export default function 
-(url: string, events: ISocketCallback[]) {
+export default function useSocket(url: string, events: ISocketCallback[]) {
   useEffect(() => {
     //@ts-ignore
     const socket = io(url);

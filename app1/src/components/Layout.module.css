@@ -7,11 +7,15 @@
 }
 
 :global(body) {
-  background-color: #f7f9fa;
+  background-color: #fff;
   padding-top: 56px;
+  margin: 0;
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 1080px) {
+  :global(body) {
+    padding: 56px 20px;
+  }
   .root {
     width: 100%;
   }
