@@ -24,7 +24,6 @@ export default function Search(props: ISearch) {
         id='search-input'
         value={searchTerm}
         type="text"
-        defaultValue=""
         placeholder="Search by price (e.g. 34.56)"
         onChange={onInputChange}
         autoComplete={"off"}
