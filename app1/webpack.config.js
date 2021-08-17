@@ -25,7 +25,7 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: ["style-loader", "css-loader", "less-loader"],
       },
     ],
   },
@@ -36,7 +36,7 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         // expose each component
-        './CounterAppOne': './src/components/CounterAppOne',
+        './OrderTable': './src/components/OrderTable',
         './Layout': './src/components/Layout',
 
       },

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 //@ts-ignore
-import CounterAppOne from 'app1/CounterAppOne';
+import OrderTable from 'app1/OrderTable';
 //@ts-ignore
 import Layout from 'app1/Layout';
 import Home from './page/home';
@@ -39,7 +39,7 @@ export default function App() {
               }}
             >
               <h2>APP-1</h2>
-              <CounterAppOne data={"test"}/>
+              <OrderTable data={"test"}/>
             </div>
             <div style={{border: '1px dashed black', padding: '2rem'}}>
               <h2>APP-2</h2>

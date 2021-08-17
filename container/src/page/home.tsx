@@ -1,18 +1,13 @@
-import React from 'react';
-import useSocket from '../hooks/useSocket';
+import useOrderEvents from '../hooks/useOrderEvents';
+//@ts-ignore
+import OrderTable from 'app1/OrderTable';
 
 export default function Home() {
-  
-  useSocket('ws://localhost:9001', [
-    {
-      eventName: 'order_event', callback: (data: any) => {
-        console.warn('receive', data)
-      }
-    }
-  ])
+  const orderData = useOrderEvents()
   return (
     <div>
       Home
+      <OrderTable orderData={orderData} supportSearch={true}/>
     </div>
   )
 }

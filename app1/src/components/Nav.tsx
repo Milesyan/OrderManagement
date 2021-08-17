@@ -4,7 +4,9 @@ import styles from './Nav.module.css';
 export default function Nav() {
   return (
     <div className={styles.navRoot}>
-      Nav
+      <div className={styles.container}>
+        Food Orders Manage System
+      </div>
     </div>
   )
 }

@@ -14,7 +14,7 @@ app1
 │  ├─ remoteEntry.js
 │  ├─ remoteEntry.js.LICENSE.txt
 │  ├─ src_bootstrap_tsx.js
-│  └─ src_components_CounterAppOne_tsx.js
+│  └─ src_components_OrderTable_tsx.js
 ├─ package-lock.json
 ├─ package.json
 ├─ public
@@ -24,7 +24,7 @@ app1
 │  ├─ App.tsx
 │  ├─ bootstrap.tsx
 │  ├─ components
-│  │  └─ CounterAppOne.tsx
+│  │  └─ OrderTable.tsx
 │  └─ index.ts
 ├─ tsconfig.json
 ├─ webpack.config.js
