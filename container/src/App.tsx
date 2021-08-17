@@ -1,21 +1,18 @@
 import React, {useEffect} from 'react';
 //@ts-ignore
-import CounterAppTwo from 'app2/CounterAppTwo';
-//@ts-ignore
 import CounterAppOne from 'app1/CounterAppOne';
-import io from 'socket.io-client';
+//@ts-ignore
+import Layout from 'app1/Layout';
+import Home from './page/home';
 
 export default function App() {
-  useEffect(() => {
-    console.warn('socket')
-    const socket = io('ws://localhost:9001');
-    socket.on('order_event', (data) => {
-      console.log('Received order event', data);
-    });
-  }, [])
+
   return (
-    <div style={{margin: '20px'}}>
-      <React.Suspense fallback="Loading header...">
+    <Layout>
+      <Home/>
+    </Layout>
+    // <div style={{margin: '20px'}}>
+      /* <React.Suspense fallback="Loading header...">
         <div
           style={{
             border: '1px dashed black',
@@ -42,7 +39,7 @@ export default function App() {
               }}
             >
               <h2>APP-1</h2>
-              <CounterAppOne />
+              <CounterAppOne data={"test"}/>
             </div>
             <div style={{border: '1px dashed black', padding: '2rem'}}>
               <h2>APP-2</h2>
@@ -50,7 +47,7 @@ export default function App() {
             </div>
           </div>
         </div>
-      </React.Suspense>
-    </div>
+      </React.Suspense> */
+    // </div>
   )
 }

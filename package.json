@@ -3,7 +3,6 @@
   "workspaces": {
     "packages": [
       "app1",
-      "app2",
       "container"
     ]
   },

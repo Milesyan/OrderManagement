@@ -23,6 +23,10 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
   },
   plugins: [
@@ -33,6 +37,8 @@ module.exports = {
       exposes: {
         // expose each component
         './CounterAppOne': './src/components/CounterAppOne',
+        './Layout': './src/components/Layout',
+
       },
       shared: {
         ...deps,

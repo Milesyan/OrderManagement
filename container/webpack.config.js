@@ -23,6 +23,10 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      }
     ],
   },
   plugins: [
@@ -30,8 +34,7 @@ module.exports = {
       name: 'container',
       library: { type: 'var', name: 'container' },
       remotes: {
-        app1: 'app1',
-        app2: 'app2',
+        app1: 'app1'
       },
       shared: {
         ...deps,
