@@ -23,7 +23,8 @@ export default function Search(props: ISearch) {
         className={styles.input}
         id='search-input'
         value={searchTerm}
-        type="text"
+        type="number"
+        step={0.01}
         placeholder="Search by price (e.g. 34.56)"
         onChange={onInputChange}
         autoComplete={"off"}

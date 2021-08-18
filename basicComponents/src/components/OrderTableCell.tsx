@@ -1,3 +1,4 @@
+import {memo} from "react";
 import {IOrder, IOrderStatus} from "src/types";
 import styles from './OrderTableCell.module.css';
 
@@ -15,9 +16,8 @@ function centsToDollar(cents: number) {
   return (cents/100).toLocaleString("en-US", {style:"currency", currency:"USD"});
 
 }
-export default function OrderTableCell(props: IOrderTableCell) {
+const OrderTableCell = (props: IOrderTableCell) => {
   const {order} = props;
-
   return (
     <tr className={styles.cellRoot}>
       <th className={styles.item}>
@@ -38,6 +38,8 @@ export default function OrderTableCell(props: IOrderTableCell) {
     </tr>
   )
 }
+
+export default memo(OrderTableCell);
 
 export function OrderTableHeader() {
   return (

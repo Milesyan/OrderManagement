@@ -1,27 +1,35 @@
 import useSocket from './useSocket';
 import { useImmer } from "use-immer";
 import {IOrder} from 'src/types';
+import {enableMapSet} from 'immer';
+import {MutableRefObject, useRef} from 'react';
+enableMapSet();
 
-export default function useOrderEvents() {
-  const [orderData, updateOrderData] = useImmer<IOrder[]>([])
+export interface IOrderData {
+  idOrderMap: Map<string, IOrder>;
+  priceIdMap: Map<number, Set<string>>;
+}
+export default function useOrderEvents(): IOrderData{
+  const [orderData, setOrderData] = useImmer<IOrderData>({
+    idOrderMap: new Map<string, IOrder>(),
+    priceIdMap: new Map<number, Set<string>>()
+  })
+  const updateCallback = (orders: IOrder[]) => {
+    setOrderData(draft => {
+      for (const order of orders) {
+        if (!draft.priceIdMap.get(order.price)) {
+          draft.priceIdMap.set(order.price, new Set([order.id]))
+        } else {
+          draft.priceIdMap.get(order.price)?.add(order.id)
+        }
+        draft.idOrderMap.set(order.id, order)
+      }
+    })
+  }
   useSocket('ws://localhost:9001', [
     {
       eventName: 'order_event', 
-      callback: (orders: IOrder[]) => {
-        updateOrderData(draft => {
-          const ids = new Set(draft.map(o => o.id));
-          orders.forEach(order => {
-            if (ids.has(order.id)) {
-              // order id exists
-              const existOrder = draft.find(o => o.id == order.id);
-              Object.assign(existOrder, order)
-            } else {
-              // new order
-              draft.push(order)
-            }
-          })
-        })
-      }
+      callback: updateCallback
     }
   ])
   return orderData
