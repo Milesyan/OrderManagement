@@ -50,6 +50,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.dev.html',
+      favicon: './public/favicon.png'
     }),
   ],
 };

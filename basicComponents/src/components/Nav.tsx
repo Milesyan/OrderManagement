@@ -1,11 +1,14 @@
 import React from 'react';
 import styles from './Nav.module.css';
 
-export default function Nav() {
+interface INav {
+  title: string;
+}
+export default function Nav(props: INav) {
   return (
     <div className={styles.navRoot}>
       <div className={styles.container}>
-        Food Orders Manage System
+        {props.title}
       </div>
     </div>
   )

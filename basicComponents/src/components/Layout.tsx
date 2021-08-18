@@ -3,13 +3,13 @@ import styles from './Layout.module.css';
 import Nav from './Nav';
 
 interface ILayout {
-
+  title: string;
 }
 export default function Layout(props: PropsWithChildren<ILayout>) {
   return (
     <>
       <div className={styles.root}>
-        <Nav/>
+        <Nav title={props.title}/>
         {props.children}
       </div>
     </>

@@ -1,34 +1,34 @@
-import React, {MutableRefObject, ReactElement, useEffect, useRef, useState} from 'react';
+import {ReactNode} from 'react';
 import Divider from '../common/Divider';
-import {IOrder} from '../types';
-import OrderTableCell, {OrderTableHeader} from './OrderTableCell';
 import Search from './Search';
+import styles from './Table.module.css';
 
 interface ITable {
   supportSearch: boolean;
-  count: number;
-  renderHeader: ReactElement;
-  renderContent: ReactElement;
+  text: string;
+  searchPlaceholder?: string;
+  renderHeader: () => ReactNode;
+  renderContent: () => ReactNode;
   onSearchUpdate: (term: string) => void;
 }
 export default function Table(props: ITable) {
-
-
   return (
     <>
       {
         props.supportSearch &&
         <>
-          <Search onSearchTermUpdate={props.onSearchUpdate} count={props.count} />
+          <Search
+            placeholder={props.searchPlaceholder}
+            onSearchTermUpdate={props.onSearchUpdate} text={props.text} />
           <Divider />
         </>
       }
-      <table style={{width: '100%'}}>
+      <table className={styles.table}>
         <thead>
-          {props.renderHeader}
+          {props.renderHeader()}
         </thead>
         <tbody>
-          {props.renderContent}
+          {props.renderContent()}
         </tbody>
       </table>
     </>

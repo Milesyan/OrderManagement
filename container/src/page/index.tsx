@@ -5,7 +5,7 @@ import { Switch, Route, Redirect, BrowserRouter} from "react-router-dom";
 
 export default function Home() {
   return (
-    <Layout>
+    <Layout title="Food Orders Manage System">
       <BrowserRouter>
         <React.Suspense fallback={"Loading"}>
           <Switch>

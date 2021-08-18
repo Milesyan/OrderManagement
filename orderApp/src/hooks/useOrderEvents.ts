@@ -2,7 +2,7 @@ import useSocket from './useSocket';
 import { useImmer } from "use-immer";
 import {IOrder} from 'src/types';
 import {enableMapSet} from 'immer';
-import {MutableRefObject, useRef} from 'react';
+import CONFIGS from '../env';
 enableMapSet();
 
 export interface IOrderData {
@@ -17,16 +17,18 @@ export default function useOrderEvents(): IOrderData{
   const updateCallback = (orders: IOrder[]) => {
     setOrderData(draft => {
       for (const order of orders) {
+        // update price to orderId Map
         if (!draft.priceIdMap.get(order.price)) {
           draft.priceIdMap.set(order.price, new Set([order.id]))
         } else {
           draft.priceIdMap.get(order.price)?.add(order.id)
         }
+        // update Id to order Map
         draft.idOrderMap.set(order.id, order)
       }
     })
   }
-  useSocket('ws://localhost:9001', [
+  useSocket(CONFIGS.ORDER_SERVER_HOST, [
     {
       eventName: 'order_event', 
       callback: updateCallback

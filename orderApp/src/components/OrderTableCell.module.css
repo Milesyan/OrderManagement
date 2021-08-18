@@ -1,0 +1,35 @@
+
+.cellRoot {
+  min-height: 40px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.headerCell {
+  background: #fafafa;
+  color: #000;
+  font-weight: 500;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.item, .customer, .price, .status {
+  min-width: 80px;
+}
+
+.item {
+  flex: 2 0;
+}
+.customer {
+  flex: 2 0;
+}
+.price {
+  flex: 1 1;
+}
+.destination {
+  flex: 5 0;
+
+}
+.status {
+  flex: 2 0;
+}

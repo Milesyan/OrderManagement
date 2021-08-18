@@ -24,7 +24,6 @@ module.exports = {
       filename: 'remoteEntry.js',
       exposes: {
         // expose each component
-        './OrderTable': './src/components/OrderTable',
       },
       shared: {
         ...deps,

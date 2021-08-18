@@ -4,7 +4,8 @@ import styles from './Search.module.css';
 
 interface ISearch {
   onSearchTermUpdate: (t: string) => void;
-  count: number;
+  text: string;
+  placeholder?: string;
 }
 export default function Search(props: ISearch) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,18 +22,17 @@ export default function Search(props: ISearch) {
     <div className={styles.searchRoot}>
       <input
         className={styles.input}
-        id='search-input'
         value={searchTerm}
         type="number"
         step={0.01}
-        placeholder="Search by price (e.g. 34.56)"
+        placeholder={props.placeholder}
         onChange={onInputChange}
         autoComplete={"off"}
       />
       {
         debouncedValue &&
         <div className={styles.count}>
-          Matching Orders: {props.count}
+          {props.text}
         </div>
       }
 
