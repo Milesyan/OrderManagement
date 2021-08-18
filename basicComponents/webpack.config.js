@@ -9,10 +9,10 @@ module.exports = {
   mode: 'development',
   devServer: {
     contentBase: path.join(__dirname, 'dist'),
-    port: 3001,
+    port: 3002,
   },
   output: {
-    publicPath: 'http://localhost:3001/',
+    publicPath: 'http://localhost:3002/',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
@@ -32,9 +32,9 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'app1',
+      name: 'basicComponents',
       ...federationConfig,
-      library: { type: 'var', name: 'app1' },
+      library: { type: 'var', name: 'basicComponents' },
       filename: 'remoteEntry.js',
       shared: {
         ...deps,

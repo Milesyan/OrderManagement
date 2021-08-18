@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import Index from './page';
+import Home from './page/orderApp';
 
 export default function App() {
 
   return (
-      <Index/>
+      <Home/>
   )
 }

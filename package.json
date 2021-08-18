@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": {
     "packages": [
-      "app1",
+      "basicComponents",
+      "orderApp",
       "container"
     ]
   },
@@ -10,7 +11,8 @@
     "start": "lerna run --parallel start",
     "build": "lerna run build",
     "serve": "lerna run --parallel serve",
-    "clean": "lerna run --parallel clean"
+    "clean": "lerna run --parallel clean",
+    "make-types": "lerna run --parallel make-types"
   },
   "devDependencies": {
     "lerna": "3.22.1"

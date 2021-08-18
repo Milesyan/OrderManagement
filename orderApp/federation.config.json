@@ -1,0 +1,6 @@
+{
+  "name": "orderApp",
+  "exposes": {
+      "./page/orderApp": "./src/page/orderApp"
+  }
+}

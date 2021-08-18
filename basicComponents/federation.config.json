@@ -1,5 +1,5 @@
 {
-  "name": "app1",
+  "name": "basicComponents",
   "exposes": {
       "./components/OrderTable": "./src/components/OrderTable",
       "./components/Layout": "./src/components/Layout"

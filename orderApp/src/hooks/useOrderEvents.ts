@@ -1,4 +1,4 @@
-import useSocket from '../hooks/useSocket';
+import useSocket from './useSocket';
 import { useImmer } from "use-immer";
 import {IOrder} from 'src/types';
 

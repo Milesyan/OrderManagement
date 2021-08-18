@@ -2,7 +2,7 @@
 
 Full article here:
 ```
-app1
+basicComponents
 ├─ dist
 │  ├─ 303.js
 │  ├─ 303.js.LICENSE.txt

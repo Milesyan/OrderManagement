@@ -1,13 +1,12 @@
 import useOrderEvents from '../hooks/useOrderEvents';
-import OrderTable from 'app1/components/OrderTable';
-import Layout from 'app1/components/Layout';
+import OrderTable from 'basicComponents/components/OrderTable';
 
 
 export default function Home() {
   const orderData = useOrderEvents()
   return (
-    <Layout>
+    <>
       <OrderTable orderData={orderData} supportSearch={true} />
-    </Layout>
+    </>
   )
 }
