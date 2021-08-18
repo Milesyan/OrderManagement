@@ -1,12 +1,12 @@
 import Layout from 'basicComponents/components/Layout';
 import OrderApp from 'orderApp/page/orderApp'
 import React from 'react';
-import { Switch, Route, Redirect, HashRouter} from "react-router-dom";
+import { Switch, Route, Redirect, BrowserRouter} from "react-router-dom";
 
 export default function Home() {
   return (
     <Layout>
-      <HashRouter>
+      <BrowserRouter>
         <React.Suspense fallback={"Loading"}>
           <Switch>
             <Route path="/order">
@@ -15,7 +15,7 @@ export default function Home() {
             <Redirect to='/order' />
           </Switch>
         </React.Suspense>
-      </HashRouter>
+      </BrowserRouter>
     </Layout>
   )
 }
