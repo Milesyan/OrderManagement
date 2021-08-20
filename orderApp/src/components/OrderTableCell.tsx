@@ -46,7 +46,7 @@ const OrderTableCell = (props: IOrderTableCell) => {
   )
 }
 
-export default memo(OrderTableCell);
+export default memo(OrderTableCell, (prev, curr) => prev.order.id === curr.order.id && prev.order.event_name === curr.order.event_name);
 
 export function OrderTableHeader() {
   return (
