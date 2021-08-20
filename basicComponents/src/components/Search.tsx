@@ -19,7 +19,7 @@ export default function Search(props: ISearch) {
     props.onSearchTermUpdate(debouncedValue);
   }, [debouncedValue])
   return (
-    <div className={styles.searchRoot}>
+  <div className={styles.searchRoot}>
       <input
         className={styles.input}
         value={searchTerm}
@@ -31,7 +31,7 @@ export default function Search(props: ISearch) {
       />
       {
         debouncedValue &&
-        <div className={styles.count}>
+        <div className={styles.text}>
           {props.text}
         </div>
       }

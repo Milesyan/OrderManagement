@@ -16,12 +16,12 @@ export default function Table(props: ITable) {
     <>
       {
         props.supportSearch && props.onSearchUpdate &&
-        <>
+        <div className={styles.top}>
           <Search
             placeholder={props.searchPlaceholder}
             onSearchTermUpdate={props.onSearchUpdate} text={props.text ?? ''} />
           <Divider />
-        </>
+        </div>
       }
       <table className={styles.table}>
         <thead>

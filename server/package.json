@@ -4,15 +4,19 @@
   "description": "Socket server that supplies a front-end with order data",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js",
+    "run": "node server.js"
   },
   "engines": {
     "node": ">=14.16.0"
- },
+  },
   "author": "City Storage Systems",
   "license": "UNLICENSED",
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
   }
 }

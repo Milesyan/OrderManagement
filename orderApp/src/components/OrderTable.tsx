@@ -1,7 +1,8 @@
-import React, { useEffect, useRef, useState} from 'react';
+import React, { useCallback, useEffect, useRef, useState} from 'react';
 import OrderTableCell, {OrderTableHeader} from './OrderTableCell';
 import Table from 'basicComponents/components/Table';
 import {IOrder} from 'src/types';
+import useUpdateEffect from '../hooks/useUpdateEffect';
 
 const INITAL_SHOW_ORDERS_COUNT = 30;
 
@@ -33,18 +34,24 @@ export default function OrderTable(props: IOrderTable) {
     };
   }, [shownKeys, ref.current])
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     const _searchCents = Math.round(parseFloat(searchTerm) * 100);
     const _ids = props.priceCache.get(_searchCents) ?? [];
     setSearchResults(Array.from(_ids).map(_id => props.orderDataMap.get(_id) as IOrder).filter(o => !!o))
   }, [searchTerm, props.priceCache])
 
+  const onSearchUpdate = useCallback((term: string) => {
+    if (term === '') {
+      setShowCount(INITAL_SHOW_ORDERS_COUNT)
+    }
+    setSearchTerm(term);
+  }, [searchTerm])
   return (
     <>
       <Table
         supportSearch={true}
         searchPlaceholder={'Search by price (e.g. 34.07)'}
-        text={`Matching Orders: ${searchTerm ? shownOrdersData.length : props.orderDataMap.size}`}
+        text={`Number of Matching Orders: ${searchTerm ? shownOrdersData.length : props.orderDataMap.size}`}
         renderHeader={() => (
           <OrderTableHeader />
         )}
@@ -57,7 +64,7 @@ export default function OrderTable(props: IOrderTable) {
             }
           </>
         }
-        onSearchUpdate={setSearchTerm}
+        onSearchUpdate={onSearchUpdate}
       />
       <div ref={ref} style={{height: 0, width: 0}} />
     </>
