@@ -18,6 +18,13 @@ function centsToDollar(cents: number) {
 }
 const OrderTableCell = (props: IOrderTableCell) => {
   const {order} = props;
+  const STATUS_COLOR_MAP: {[key in IOrder['event_name']]?: string} = {
+    'CREATED': 'transparent',
+    'COOKED': 'lightcyan',
+    'DRIVER_RECEIVED': 'lightyellow',
+    'DELIVERED': 'lightgreen',
+    'CANCELLED': 'lightcoral'
+  }
   return (
     <tr className={styles.cellRoot}>
       <th className={styles.item}>
@@ -32,7 +39,7 @@ const OrderTableCell = (props: IOrderTableCell) => {
       <th className={styles.destination}>
         {order.destination}
       </th>
-      <th className={styles.status}>
+      <th className={styles.status} style={{backgroundColor: STATUS_COLOR_MAP[order.event_name]}}>
         {EVENT_STATUS_MAP[order.event_name] ?? order.event_name}
       </th>
     </tr>
