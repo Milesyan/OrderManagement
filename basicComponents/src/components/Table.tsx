@@ -4,31 +4,31 @@ import Search from './Search';
 import styles from './Table.module.css';
 
 interface ITable {
-  supportSearch: boolean;
-  text: string;
+  text?: string;
+  supportSearch?: boolean;
   searchPlaceholder?: string;
-  renderHeader: () => ReactNode;
-  renderContent: () => ReactNode;
-  onSearchUpdate: (term: string) => void;
+  renderHeader?: () => ReactNode;
+  renderContent?: () => ReactNode;
+  onSearchUpdate?: (term: string) => void;
 }
 export default function Table(props: ITable) {
   return (
     <>
       {
-        props.supportSearch &&
+        props.supportSearch && props.onSearchUpdate &&
         <>
           <Search
             placeholder={props.searchPlaceholder}
-            onSearchTermUpdate={props.onSearchUpdate} text={props.text} />
+            onSearchTermUpdate={props.onSearchUpdate} text={props.text ?? ''} />
           <Divider />
         </>
       }
       <table className={styles.table}>
         <thead>
-          {props.renderHeader()}
+          {props.renderHeader?.()}
         </thead>
         <tbody>
-          {props.renderContent()}
+          {props.renderContent?.()}
         </tbody>
       </table>
     </>

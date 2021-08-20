@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render Layout components 1`] = `
+<div
+  className="root"
+>
+  <div
+    className="navRoot"
+  >
+    <div
+      className="container"
+    >
+      Demo title
+    </div>
+  </div>
+</div>
+`;
+
+exports[`render Nav components 1`] = `
+<div
+  className="navRoot"
+>
+  <div
+    className="container"
+  >
+    Demo Nav title
+  </div>
+</div>
+`;
+
+exports[`render Search components 1`] = `
+<div
+  className="searchRoot"
+>
+  <input
+    autoComplete="off"
+    className="input"
+    onChange={[Function]}
+    step={0.01}
+    type="number"
+    value=""
+  />
+  
+</div>
+`;
+
+exports[`render Table components 1`] = `
+<table
+  className="table"
+>
+  <thead>
+    <div>
+      Example header
+    </div>
+  </thead>
+  <tbody>
+    <div>
+      Exmaple content
+    </div>
+  </tbody>
+</table>
+`;

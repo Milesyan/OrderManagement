@@ -5,3 +5,9 @@ exports[`adds 1 + 2 to equal 3 1`] = `
   className="divider"
 />
 `;
+
+exports[`render common components 1`] = `
+<div
+  className="divider"
+/>
+`;
