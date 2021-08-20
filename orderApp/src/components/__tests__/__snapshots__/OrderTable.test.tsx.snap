@@ -69,6 +69,11 @@ Array [
         </th>
         <th
           className="status"
+          style={
+            Object {
+              "backgroundColor": "lightyellow",
+            }
+          }
         >
           Driver Received
         </th>
@@ -98,6 +103,11 @@ Array [
         </th>
         <th
           className="status"
+          style={
+            Object {
+              "backgroundColor": "transparent",
+            }
+          }
         >
           Created
         </th>
