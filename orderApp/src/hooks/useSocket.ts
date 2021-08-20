@@ -10,5 +10,8 @@ export default function useSocket(url: string, events: ISocketCallback[]) {
     for (const e of events) {
       socket.on(e.eventName, e.callback);
     }
+    return () => {
+      return socket?.disconnect();
+    }
   }, [])
 }

@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`test orderDataMutableUpdater logic 1`] = `
+Object {
+  "idOrderMap": Map {
+    "b11b8a69" => Object {
+      "customer": "Karina Lopez",
+      "destination": "89548 Andrew Road Apt. 797, Lake Phillipville, CA 92007",
+      "event_name": "COOKED",
+      "id": "b11b8a69",
+      "item": "Fish tacos",
+      "price": 8700,
+      "sent_at_second": 30,
+    },
+    "0b63508d" => Object {
+      "customer": "Heather Hughes",
+      "destination": "7465 Willis Fork, Lake Gabrielle, CA 92816",
+      "event_name": "CREATED",
+      "id": "0b63508d",
+      "item": "Berry smoothie",
+      "price": 8029,
+      "sent_at_second": 5,
+    },
+  },
+  "priceIdMap": Map {
+    8700 => Set {
+      "b11b8a69",
+    },
+    8029 => Set {
+      "0b63508d",
+    },
+  },
+}
+`;
+
+exports[`test orderDataMutableUpdater logic 2`] = `
+Object {
+  "idOrderMap": Map {
+    "b11b8a69" => Object {
+      "customer": "Karina Lopez",
+      "destination": "89548 Andrew Road Apt. 797, Lake Phillipville, CA 92007",
+      "event_name": "DRIVER_RECEIVED",
+      "id": "b11b8a69",
+      "item": "Fish tacos",
+      "price": 8700,
+      "sent_at_second": 30,
+    },
+    "0b63508d" => Object {
+      "customer": "Heather Hughes",
+      "destination": "7465 Willis Fork, Lake Gabrielle, CA 92816",
+      "event_name": "CREATED",
+      "id": "0b63508d",
+      "item": "Berry smoothie",
+      "price": 8029,
+      "sent_at_second": 5,
+    },
+  },
+  "priceIdMap": Map {
+    8700 => Set {
+      "b11b8a69",
+    },
+    8029 => Set {
+      "0b63508d",
+    },
+  },
+}
+`;
+
+exports[`test orderDataMutableUpdater logic 3`] = `
+Object {
+  "idOrderMap": Map {
+    "b11b8a69" => Object {
+      "customer": "Karina Lopez",
+      "destination": "89548 Andrew Road Apt. 797, Lake Phillipville, CA 92007",
+      "event_name": "DRIVER_RECEIVED",
+      "id": "b11b8a69",
+      "item": "Fish tacos",
+      "price": 8700,
+      "sent_at_second": 30,
+    },
+    "0b63508d" => Object {
+      "customer": "Heather Hughes",
+      "destination": "7465 Willis Fork, Lake Gabrielle, CA 92816",
+      "event_name": "CREATED",
+      "id": "0b63508d",
+      "item": "Berry smoothie",
+      "price": 8029,
+      "sent_at_second": 5,
+    },
+    "b11b8a69xxx" => Object {
+      "customer": "Karina Lopez",
+      "destination": "89548 Andrew Road Apt. 797, Lake Phillipville, CA 92007",
+      "event_name": "CREATED",
+      "id": "b11b8a69xxx",
+      "item": "Fish tacos",
+      "price": 8700,
+      "sent_at_second": 30,
+    },
+  },
+  "priceIdMap": Map {
+    8700 => Set {
+      "b11b8a69",
+      "b11b8a69xxx",
+    },
+    8029 => Set {
+      "0b63508d",
+    },
+  },
+}
+`;

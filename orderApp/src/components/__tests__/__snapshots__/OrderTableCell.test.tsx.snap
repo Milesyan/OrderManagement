@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render OrderTableCell 1`] = `
+<tr
+  className="cellRoot headerCell"
+>
+  <th
+    className="item"
+  >
+    Item
+  </th>
+  <th
+    className="customer"
+  >
+    Customer Name
+  </th>
+  <th
+    className="price"
+  >
+    Price
+  </th>
+  <th
+    className="destination"
+  >
+    Destination
+  </th>
+  <th
+    className="status"
+  >
+    Order Status
+  </th>
+</tr>
+`;
+
+exports[`render OrderTableCell 2`] = `
+<tr
+  className="cellRoot"
+>
+  <th
+    className="item"
+  >
+    example-item
+  </th>
+  <th
+    className="customer"
+  >
+    miles
+  </th>
+  <th
+    className="price"
+  >
+    $99.99
+  </th>
+  <th
+    className="destination"
+  >
+    destination
+  </th>
+  <th
+    className="status"
+  >
+    Driver Received
+  </th>
+</tr>
+`;

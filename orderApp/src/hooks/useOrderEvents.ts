@@ -9,6 +9,19 @@ export interface IOrderData {
   idOrderMap: Map<string, IOrder>;
   priceIdMap: Map<number, Set<string>>;
 }
+
+export const orderDataMutableUpdater = (origin: IOrderData, orders: IOrder[]) => {
+  for (const order of orders) {
+    // update price to orderId Map
+    if (!origin.priceIdMap.get(order.price)) {
+      origin.priceIdMap.set(order.price, new Set([order.id]))
+    } else {
+      origin.priceIdMap.get(order.price)?.add(order.id)
+    }
+    // update Id to order Map
+    origin.idOrderMap.set(order.id, order)
+  }
+}
 export default function useOrderEvents(): IOrderData{
   const [orderData, setOrderData] = useImmer<IOrderData>({
     idOrderMap: new Map<string, IOrder>(),
@@ -16,16 +29,7 @@ export default function useOrderEvents(): IOrderData{
   })
   const updateCallback = (orders: IOrder[]) => {
     setOrderData(draft => {
-      for (const order of orders) {
-        // update price to orderId Map
-        if (!draft.priceIdMap.get(order.price)) {
-          draft.priceIdMap.set(order.price, new Set([order.id]))
-        } else {
-          draft.priceIdMap.get(order.price)?.add(order.id)
-        }
-        // update Id to order Map
-        draft.idOrderMap.set(order.id, order)
-      }
+      orderDataMutableUpdater(draft, orders)
     })
   }
   useSocket(CONFIGS.ORDER_SERVER_HOST, [

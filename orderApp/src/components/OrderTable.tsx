@@ -5,7 +5,7 @@ import {IOrder} from 'src/types';
 
 const INITAL_SHOW_ORDERS_COUNT = 30;
 
-interface IOrderTable {
+export interface IOrderTable {
   orderDataMap: Map<string, IOrder>;
   priceCache: Map<number, Set<string>>;
   supportSearch: boolean;
