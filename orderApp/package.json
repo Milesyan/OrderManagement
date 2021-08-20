@@ -22,6 +22,7 @@
     "build": "webpack --config webpack.prod.js",
     "serve": "serve dist -p 3002",
     "clean": "rm -rf dist",
+    "test": "jest",
     "make-types": "make-federated-types"
   },
   "dependencies": {
