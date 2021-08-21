@@ -1,10 +1,11 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { ModuleFederationPlugin } = require('webpack').container;
 const deps = require('./package.json').dependencies;
+const federationConfig = require('./federation.config.json');
 
 module.exports = {
   entry: './src/index.ts',
-  mode: 'development',
+  mode: 'production',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
@@ -15,12 +16,18 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader", "less-loader"],
+      }
     ],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'container',
-      library: { type: 'var', name: 'container' },
+      name: 'orderApp',
+      ...federationConfig,
+      library: { type: 'var', name: 'orderApp' },
+      filename: 'remoteEntry.js',
       remotes: {
         basicComponents: 'basicComponents',
       },

@@ -4,7 +4,7 @@ const deps = require('./package.json').dependencies;
 
 module.exports = {
   entry: './src/index.ts',
-  mode: 'development',
+  mode: 'production',
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
   },
@@ -15,6 +15,10 @@ module.exports = {
         loader: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      }
     ],
   },
   plugins: [
@@ -23,6 +27,7 @@ module.exports = {
       library: { type: 'var', name: 'container' },
       remotes: {
         basicComponents: 'basicComponents',
+        orderApp: 'orderApp'
       },
       shared: {
         ...deps,
@@ -36,6 +41,7 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       template: './public/index.prod.html',
+      favicon: './public/favicon.png'
     }),
   ],
 };

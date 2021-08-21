@@ -20,7 +20,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack --config webpack.prod.js",
-    "serve": "serve dist -p 3002",
+    "serve": "serve dist -p 3001",
     "clean": "rm -rf dist",
     "test": "jest",
     "make-types": "make-federated-types"
