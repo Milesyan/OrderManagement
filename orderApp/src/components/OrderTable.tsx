@@ -1,11 +1,11 @@
-import React, { useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import OrderTableCell, {OrderTableHeader} from './OrderTableCell';
 import Table from 'basicComponents/components/Table';
 import {IOrder} from 'src/types';
 import useUpdateEffect from '../hooks/useUpdateEffect';
 
 const INITAL_SHOW_ORDERS_COUNT = 30;
-
+const LOADING_ORDERS_COUNT = 5;
 export interface IOrderTable {
   orderDataMap: Map<string, IOrder>;
   priceCache: Map<number, Set<string>>;
@@ -22,7 +22,7 @@ export default function OrderTable(props: IOrderTable) {
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((e) => {
         if (e.intersectionRatio > 0 && shownKeys.length >= INITAL_SHOW_ORDERS_COUNT) {
-          setShowCount(c => c + 5);
+          setShowCount(c => c + LOADING_ORDERS_COUNT);
         }
       });
     };
@@ -46,6 +46,7 @@ export default function OrderTable(props: IOrderTable) {
     }
     setSearchTerm(term);
   }, [searchTerm])
+
   return (
     <>
       <Table
@@ -58,9 +59,11 @@ export default function OrderTable(props: IOrderTable) {
         renderContent={() =>
           <>
             {
-              shownOrdersData.map(o => (
+              shownOrdersData.length > 0 ? shownOrdersData.map(o => (
                 <OrderTableCell key={o.id} order={o} />
               ))
+                :
+                <div style={{marginTop: 12, color: 'grey', width: '100%', textAlign: 'center'}}>No Data</div>
             }
           </>
         }

@@ -13,6 +13,7 @@ This is to make the system easy to scale if there are more features required in 
 Run `yarn` to install the dependencies.
 Run `yarn start`. This will serve `container`, `orderApp` and `basicComponent` projects on port 3000, 3001 and 3002 respectively.
 Run `yarn test` to run the unit test cases and `yarn test:u` to update test snapshots.
+Run `yarn make-types` to generate typescript d.ts files.
 
 - [localhost:3000](http://localhost:3000/) for the container app
 - [localhost:3001](http://localhost:3001/) for the order management app
