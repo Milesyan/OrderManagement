@@ -46,7 +46,6 @@ io.on('connect', (socket) => {
     }
     const toSend = byTime[String(elapsed)];
     if (toSend && toSend.length > 0) {
-      console.warn('emit')
       io.emit('order_event', toSend);
     }
     elapsed += 1;

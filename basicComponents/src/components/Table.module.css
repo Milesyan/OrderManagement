@@ -22,7 +22,6 @@
         align-items: center;
       }
       &:hover {
-        transform: scale(1.01);
         background: #f2f2f2;
       }
     }
