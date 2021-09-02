@@ -4,6 +4,7 @@ import styles from './OrderTableCell.module.css';
 
 interface IOrderTableCell {
   order: IOrder;
+  setUpdatingData: (order: IOrder) => void
 }
 const EVENT_STATUS_MAP: {[key in IOrder['event_name']]: IOrderStatus} = Object.freeze({
   'CREATED': 'Created',
@@ -25,6 +26,9 @@ const OrderTableCell = (props: IOrderTableCell) => {
     'DELIVERED': 'lightgreen',
     'CANCELLED': 'lightcoral'
   }
+  const onClickUpdate = () => {
+    props.setUpdatingData(props.order)
+  }
   return (
     <tr className={styles.cellRoot}>
       <th className={styles.item}>
@@ -42,11 +46,17 @@ const OrderTableCell = (props: IOrderTableCell) => {
       <th className={styles.status} style={{backgroundColor: STATUS_COLOR_MAP[order.event_name]}}>
         {EVENT_STATUS_MAP[order.event_name] ?? order.event_name}
       </th>
+      <th className={styles.status}>
+        <button onClick={onClickUpdate}>
+          Update
+        </button>
+      </th>
     </tr>
   )
 }
 
-export default memo(OrderTableCell, (prev, curr) => prev.order.id === curr.order.id && prev.order.event_name === curr.order.event_name);
+export default memo(OrderTableCell, (prev, curr) => prev.order.id === curr.order.id && prev.order.event_name === curr.order.event_name
+ && prev.order.customer === curr.order.customer);
 
 export function OrderTableHeader() {
   return (
@@ -65,6 +75,9 @@ export function OrderTableHeader() {
       </th>
       <th className={styles.status}>
         Order Status
+      </th>
+      <th className={styles.status}>
+        Actions
       </th>
     </tr>)
 }

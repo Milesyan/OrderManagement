@@ -3,6 +3,7 @@ import OrderTableCell, {OrderTableHeader} from './OrderTableCell';
 import Table from 'basicComponents/components/Table';
 import {IOrder} from 'src/types';
 import useUpdateEffect from '../hooks/useUpdateEffect';
+import OrderUpdateModal from './OrderUpdateModal';
 
 const INITAL_SHOW_ORDERS_COUNT = 30;
 const LOADING_ORDERS_COUNT = 5;
@@ -10,6 +11,7 @@ export interface IOrderTable {
   orderDataMap: Map<string, IOrder>;
   priceCache: Map<number, Set<string>>;
   supportSearch: boolean;
+  updateOneOrder: (order: IOrder) => void;
 }
 export default function OrderTable(props: IOrderTable) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,6 +20,7 @@ export default function OrderTable(props: IOrderTable) {
   const [showCount, setShowCount] = useState(INITAL_SHOW_ORDERS_COUNT);
   const shownKeys = Array.from(props.orderDataMap.keys()).slice(0, showCount);
   const shownOrdersData = searchTerm ? searchResults : shownKeys.map(k => props.orderDataMap.get(k) as IOrder)
+  const [updatingData, setUpdatingData] = useState<IOrder | null>(null)
   useEffect(() => {
     const callback = (entries: IntersectionObserverEntry[]) => {
       entries.forEach((e) => {
@@ -46,7 +49,9 @@ export default function OrderTable(props: IOrderTable) {
     }
     setSearchTerm(term);
   }, [searchTerm])
-
+  const onOrderUpdated = (order: IOrder) => {
+    props.updateOneOrder(order)
+  }
   return (
     <>
       <Table
@@ -60,7 +65,7 @@ export default function OrderTable(props: IOrderTable) {
           <>
             {
               shownOrdersData.length > 0 ? shownOrdersData.map(o => (
-                <OrderTableCell key={o.id} order={o} />
+                <OrderTableCell key={o.id} order={o} setUpdatingData={setUpdatingData}/>
               ))
                 :
                 <div style={{marginTop: 12, color: 'grey', width: '100%', textAlign: 'center'}}>No Data</div>
@@ -70,6 +75,7 @@ export default function OrderTable(props: IOrderTable) {
         onSearchUpdate={onSearchUpdate}
       />
       <div ref={ref} style={{height: 0, width: 0}} />
+      <OrderUpdateModal onOrderUpdated={onOrderUpdated} order={updatingData}/>
     </>
   );
 }

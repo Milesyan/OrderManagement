@@ -22,7 +22,7 @@ export const orderDataMutableUpdater = (origin: IOrderData, orders: IOrder[]) =>
     origin.idOrderMap.set(order.id, order)
   }
 }
-export default function useOrderEvents(): IOrderData{
+export default function useOrderEvents(): [IOrderData, (data: IOrder) => void]{
   const [orderData, setOrderData] = useImmer<IOrderData>({
     idOrderMap: new Map<string, IOrder>(),
     priceIdMap: new Map<number, Set<string>>()
@@ -38,5 +38,10 @@ export default function useOrderEvents(): IOrderData{
       callback: updateCallback
     }
   ])
-  return orderData
+  const updateOneOrder = (order: IOrder) => {
+    setOrderData(draft => {
+      draft.idOrderMap.set(order.id, order);
+    })
+  }
+  return [orderData, updateOneOrder]
 }

@@ -2,6 +2,7 @@
   "name": "basicComponents",
   "exposes": {
       "./components/Table": "./src/components/Table",
-      "./components/Layout": "./src/components/Layout"
+      "./components/Layout": "./src/components/Layout",
+      "./components/Modal": "./src/components/Modal"
   }
 }
